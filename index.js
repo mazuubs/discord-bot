@@ -125,7 +125,7 @@ client.on('interactionCreate', async (interaction) => {
           },
           {
             name: '⚙️ Rôles',
-            value: '`/clearrole` — Retire un rôle à tous les membres\n\u200B',
+            value: '`/delrole` — Retire un rôle à tous les membres\n\u200B',
           },
           {
             name: '🎉 Fun',
@@ -226,7 +226,7 @@ client.on('interactionCreate', async (interaction) => {
       }
     }
 
-    else if (commandName === 'clearrole') {
+    else if (commandName === 'delrole') {
       if (!interaction.guild) return interaction.reply({ content: '❌ Refusé — cette commande est réservée aux serveurs.', ephemeral: true });
       if (!interaction.member.permissions.has(PermissionFlagsBits.ManageRoles)) return interaction.reply({ content: '❌ Accès refusé.', ephemeral: true });
       await interaction.deferReply();
