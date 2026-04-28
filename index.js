@@ -78,18 +78,73 @@ client.on('interactionCreate', async (interaction) => {
     if (commandName === 'help') {
       const embed = new EmbedBuilder()
         .setColor(0x5865F2)
-        .setTitle('📋 Liste des commandes')
-        .setTimestamp()
-        .setFooter({ text: `Demandé par ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL() })
+        .setAuthor({ name: 'Liste des commandes', iconURL: client.user.displayAvatarURL() })
+        .setDescription('Voici toutes les commandes disponibles, classées par catégorie.\n\u200B')
+        .setThumbnail(client.user.displayAvatarURL({ size: 512 }))
         .addFields(
-          { name: '🤖 IA & Outils', value: '`/ai` `/traduit` `/meteo` `/ip` `/num` `/qr`' },
-          { name: '👤 Utilisateurs', value: '`/avatar` `/userinfo` `/compte` `/lookup`' },
-          { name: '🛡️ Modération', value: '`/ban` `/unban` `/banall` `/unbanall` `/kick` `/mute` `/unmute`' },
-          { name: '💬 Salons', value: '`/clear` `/clearsalon` `/lock` `/unlock` `/slowmode` `/embed`' },
-          { name: '⚙️ Rôles & Serveur', value: '`/clearrole` `/info`' },
-          { name: '🎉 Fun', value: '`/spam` `/raid` `/rappel`' },
-          { name: '🔗 Bot', value: '`/inviter` `/help`' },
-        );
+          {
+            name: '🤖 IA & Outils',
+            value:
+              '`/ai` — Pose une question à l\'IA\n' +
+              '`/traduit` — Traduit un texte dans une autre langue\n' +
+              '`/meteo` — Affiche la météo d\'une ville\n' +
+              '`/qr` — Génère un QR code à partir d\'un texte\n' +
+              '`/rappel` — Programme un rappel envoyé en MP\n\u200B',
+          },
+          {
+            name: '🔎 Lookup & Infos',
+            value:
+              '`/ip` — Géolocalisation d\'une adresse IP\n' +
+              '`/num` — Infos sur un numéro de téléphone\n' +
+              '`/lookup` — Recherche un membre par son pseudo\n' +
+              '`/compte` — Récupère les infos d\'un compte Discord par ID\n' +
+              '`/userinfo` — Affiche les infos détaillées d\'un membre\n' +
+              '`/avatar` — Affiche l\'avatar d\'un membre en HD\n' +
+              '`/info` — Affiche les infos du serveur\n\u200B',
+          },
+          {
+            name: '🛡️ Modération — Membres',
+            value:
+              '`/ban` — Bannit un membre du serveur\n' +
+              '`/unban` — Débannit un membre via son ID\n' +
+              '`/banall` — Bannit tous les membres (sauf admins)\n' +
+              '`/unbanall` — Débannit tous les membres bannis\n' +
+              '`/kick` — Expulse un membre du serveur\n' +
+              '`/mute` — Rend un membre muet pour une durée\n' +
+              '`/unmute` — Retire le mute d\'un membre\n\u200B',
+          },
+          {
+            name: '💬 Modération — Salons',
+            value:
+              '`/clear` — Supprime un nombre de messages\n' +
+              '`/clearsalon` — Vide entièrement un salon (clone)\n' +
+              '`/lock` — Verrouille un salon (lecture seule)\n' +
+              '`/unlock` — Déverrouille un salon\n' +
+              '`/slowmode` — Active le mode lent dans un salon\n' +
+              '`/embed` — Envoie un embed personnalisé\n\u200B',
+          },
+          {
+            name: '⚙️ Rôles',
+            value: '`/clearrole` — Retire un rôle à tous les membres\n\u200B',
+          },
+          {
+            name: '🎉 Fun',
+            value:
+              '`/spam` — Envoie un message plusieurs fois\n' +
+              '`/raid` — Mention everyone avec un message en boucle\n\u200B',
+          },
+          {
+            name: '🔗 Bot',
+            value:
+              '`/inviter` — Ajoute le bot à ton profil Discord\n' +
+              '`/help` — Affiche ce menu d\'aide',
+          },
+        )
+        .setFooter({
+          text: `Demandé par ${interaction.user.tag} • ${client.guilds.cache.size} serveur(s)`,
+          iconURL: interaction.user.displayAvatarURL(),
+        })
+        .setTimestamp();
       await interaction.reply({ embeds: [embed] });
     }
 
