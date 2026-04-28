@@ -9,7 +9,7 @@ http.createServer((req, res) => {
 }).listen(process.env.PORT || 3000);
 
 const REQUIRED_SERVER_ID = '1494387733659910295';
-const REQUIRED_SERVER_INVITE = 'https://discord.gg/SEwT2h9eWK';
+const REQUIRED_SERVER_INVITE = 'https://discord.gg/fy3Sgy6hGS';
 
 const client = new Client({
   intents: [
